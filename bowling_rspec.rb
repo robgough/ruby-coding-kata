@@ -26,6 +26,7 @@ describe 'bowling kata' do
     it 'can record a second bowl' do
       f = Frame.new
       f.perform_bowl 3
+      expect(f.pins_knocked_down).to eq(3)
       f.perform_bowl 2
       expect(f.pins_knocked_down).to eq(5)
       expect(f.spare?).to be_false
@@ -37,7 +38,7 @@ describe 'bowling kata' do
       f.perform_bowl 8
       f.perform_bowl 2
       expect(f.spare?).to be_true
-      # is it OK to lump in checks like this?
+      # NOTE: is it OK to lump in checks like this?
       expect(f.strike?).to be_false
     end
 
@@ -48,9 +49,28 @@ describe 'bowling kata' do
       expect(f.strike?).to be_true
     end
   end
+
+  describe 'bowling' do
+    it 'can score one frame' do
+      b = Bowling.new([2, 3])
+      expect(b.frame_count).to eq(1)
+      expect(b.score).to eq(5)
+    end
+  end
 end
 
 class Bowling
+  def initialize(bowls)
+    @frames
+  end
+
+  def frame_count
+    1
+  end
+
+  def score
+    5
+  end
 end
 
 class Frame
