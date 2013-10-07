@@ -19,6 +19,14 @@ describe 'bowling kata' do
     bowls = [[10], [1,2]]
     expect(calculate_score(bowls)).to eq(16)
   end
+  it 'should be able to correctly score two spares in a row' do
+    bowls = [[8,2], [6,4], [3,0]]
+    expect(calculate_score(bowls)).to eq(32)
+  end
+  it 'should be able to correctly score a double' do
+    bowls = [[10], [10], [3,0]]
+    expect(calculate_score(bowls)).to eq(39)
+  end
 end
 
 def calculate_score(bowls)
