@@ -84,8 +84,9 @@ def get_next_throws(frames, i)
   return 0,0 unless frames[i+1]
   next_throw = frames[i+1].bowls[0]
   # if a strike was scored, then we need to jump ahead *again*
+  # unless it's the last frame, in which case there is no next frame
   if next_throw == 10 && frames[i+2]
-    next_again_throw = frames[i+2].bowls[0] if frames[i+2]
+    next_again_throw = frames[i+2].bowls[0]
   else
     next_again_throw = frames[i+1].bowls[1]
   end 
