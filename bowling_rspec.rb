@@ -55,6 +55,10 @@ describe 'bowling kata' do
     bowls = [[7,3,10]]
     expect(calculate_score(bowls)).to eq(20)
   end
+  it 'should be able to score frame nine correctly with a turkey in frame ten' do
+    bowls = [[10], [10, 10, 10]]
+    expect(calculate_score(bowls)).to eq(60)
+  end
   it 'should be able to correctly score a full game' do
     bowls = [[5,3],[5,2],[2,6],[9,1],[3,7],[10],[6,2],[5,2],[5,4],[2,8,10]]
     expect(calculate_score(bowls)).to eq(118)
@@ -80,7 +84,7 @@ def get_next_throws(frames, i)
   return 0,0 unless frames[i+1]
   next_throw = frames[i+1].bowls[0]
   # if a strike was scored, then we need to jump ahead *again*
-  if next_throw == 10
+  if next_throw == 10 && frames[i+2]
     next_again_throw = frames[i+2].bowls[0] if frames[i+2]
   else
     next_again_throw = frames[i+1].bowls[1]
