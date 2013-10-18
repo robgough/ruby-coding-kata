@@ -1,9 +1,4 @@
-task :default => [:hp, :bowling]
-desc "run the harry potter spec file"
-task "hp" do
-  sh "cucumber -f progress hp/"
-  sh "rspec hp/"
-end
+task :default => [:bowling]
 task "bowling" do 
   sh "rspec bowling_rspec.rb"
 end

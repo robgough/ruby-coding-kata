@@ -1,0 +1,6 @@
+task :default => [:hp]
+desc "run the harry potter spec file"
+task "hp" do
+  sh "cucumber -f progress"
+  sh "rspec"
+end
